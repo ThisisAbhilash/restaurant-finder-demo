@@ -30,7 +30,7 @@ export const getDummyUserReviewData = review_text => {
     return {
         review: {
           user: {
-            name: 'Crrent User',
+            name: 'Current User',
             profile_image: 'https://gravatar.com/avatar/98bed73280a9a84a3421bc59b9739d9d?s=400&d=robohash&r=x',
           },
           rating: "5", //Default to 5 stars
