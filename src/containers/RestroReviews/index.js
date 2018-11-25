@@ -28,7 +28,7 @@ class RestroReviews extends React.Component {
             this.props.getRestroFromResId(restaurantId, true);
         }
         let end = this.props.match ? 10 : 5; //load 5 if restraunt details page else load 10
-        this.props.getRestroReviews(restaurantId, 0, end);
+        this.props.getRestroReviews(restaurantId, 0, end, true);
         let enableScroll = this.props.match ? this.props.match.url.includes('/reviews/') : false;
         if (enableScroll) this.setState({ enableScroll }); //enable scroll when user viewing all reviews
     }
