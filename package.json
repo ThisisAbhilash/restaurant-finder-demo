@@ -1,8 +1,7 @@
 {
   "private": true,
-  "homepage": "https://restro-finder.now.sh",
+  "homepage": "",
   "scripts": {
-    "deploy": "now && now alias",
     "dev": "react-scripts start",
     "start": "serve -s build",
     "now-start": "serve -s ./build",
