@@ -1,0 +1,8 @@
+.Application-title{
+    background-color:rgb(133, 113, 165);
+    text-align: center;
+    font-size: 1.3em;
+    color: black;
+    border-bottom: 1px solid rgb(39, 33, 33);
+    display : flex;
+}
