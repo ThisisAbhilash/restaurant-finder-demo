@@ -32,6 +32,9 @@ export const getUserLocationRestro = () => {
                 }
                 else {
                     HandleError('Error while getting restraunt list ', restroList);
+                    dispatch({
+                        type: Actions.NOT_ALLOWED_TO_ACCESS_USER_LOCATION
+                    })
                 }
             }
         } else {
