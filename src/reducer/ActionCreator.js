@@ -23,7 +23,7 @@ export const getUserLocationRestro = () => {
                     entity_id
                 });
                 let restroList = await MakeAPICall(ZOMATO_API_ENDPOINTS.GET_RESTRO_LIST(entity_id, 'city', 1, 10, 'rating', 'desc'));
-                
+
                 if (!(restroList instanceof Error)) {
                     dispatch({
                         type: Actions.GOT_RESTRO_LIST,
@@ -34,7 +34,7 @@ export const getUserLocationRestro = () => {
                     HandleError('Error while getting restraunt list ', restroList);
                 }
             }
-        }else {
+        } else {
             dispatch({
                 type: Actions.NOT_ALLOWED_TO_ACCESS_USER_LOCATION
             })
@@ -71,9 +71,11 @@ export const setSelectedCity = (city, title, entity_id) => {
 
 export const getMoreRestro = (entity_id, start, count, entity_type = 'city', sort_by = 'rating', order_by = 'desc', changeData) => {
     return async dispatch => {
-        dispatch({
-            type: Actions.DATA_REQUESTED
-        });
+        if (changeData) {
+            dispatch({
+                type: Actions.DATA_REQUESTED
+            });
+        }
         let restroList = await MakeAPICall(ZOMATO_API_ENDPOINTS.GET_RESTRO_LIST(entity_id, entity_type, start, count, sort_by, order_by));
         if (!(restroList instanceof Error)) {
             dispatch({
@@ -89,10 +91,10 @@ export const getMoreRestro = (entity_id, start, count, entity_type = 'city', sor
 }
 
 export const getRestroReviews = (restro_id, start, end) => {
-    
+
     return async dispatch => {
         let reviewsObj = await MakeAPICall(ZOMATO_API_ENDPOINTS.GET_RESTAURANT_REVIEW(restro_id, start, end));
-        
+
         if (reviewsObj instanceof Error) {
             HandleError('Error with Review fetch API ', reviewsObj);
         }
@@ -106,13 +108,13 @@ export const getRestroReviews = (restro_id, start, end) => {
 };
 
 export const getRestroFromResId = (restro_id, changeData) => {
-    
+
     return async dispatch => {
         dispatch({
             type: Actions.DATA_REQUESTED
         });
         let restaurant = await MakeAPICall(ZOMATO_API_ENDPOINTS.GET_RESTAURANT_DETAILS(restro_id));
-        
+
         if (restaurant instanceof Error) {
             HandleError('Error with Restro fetch API ', restaurant);
         }

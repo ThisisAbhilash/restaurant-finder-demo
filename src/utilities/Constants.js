@@ -1,5 +1,5 @@
 
-const ZOMATO_API_KEY = `c20ce105db76896214f511c727a10819`;
+const ZOMATO_API_KEY = `${process.env.REACT_APP_ZOMATO_API_KEY}`;
 const ZOMATO_API = `https://developers.zomato.com/api/v2.1`;
 
 export const ZOMATO_API_ENDPOINTS = {
