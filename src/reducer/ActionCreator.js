@@ -93,9 +93,14 @@ export const getMoreRestro = (entity_id, start, count, entity_type = 'city', sor
     }
 }
 
-export const getRestroReviews = (restro_id, start, end) => {
+export const getRestroReviews = (restro_id, start, end, loader) => {
 
     return async dispatch => {
+        if (loader) {
+            dispatch({
+                type: Actions.DATA_REQUESTED
+            });
+        }
         let reviewsObj = await MakeAPICall(ZOMATO_API_ENDPOINTS.GET_RESTAURANT_REVIEW(restro_id, start, end));
 
         if (reviewsObj instanceof Error) {
